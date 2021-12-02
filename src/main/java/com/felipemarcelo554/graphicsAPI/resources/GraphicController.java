@@ -27,9 +27,9 @@ public class GraphicController {
         try {
             System.out.println("GET - getGraphicsByUser - " + userID);
 
-            if(!loginClient.isValid(jwt)){
-                return ResponseEntity.badRequest().build();
-            };
+//            if(!loginClient.isValid(jwt)){
+//                return ResponseEntity.badRequest().build();
+//            };
 
             return ResponseEntity.ok().body(graphicService.getGraphicsByUser(userID));
         } catch (GraphicNotFoundException e) {
