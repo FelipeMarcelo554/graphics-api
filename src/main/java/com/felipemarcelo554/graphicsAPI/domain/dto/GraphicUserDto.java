@@ -20,19 +20,6 @@ public class GraphicUserDto {
 
         this.graphicName = graphic.getName();
 
-//        Map<String, List<String>> valuesByName = graphic.getValues().stream()
-//                .collect(Collectors.
-//                        groupingBy(
-//                                GraphicValue::getName,
-//                                Collectors.
-//                                        mapping(
-//                                                GraphicValue::getValue,
-//                                                toList()
-//                                        )
-//                        )
-//
-//                );
-
         List<ValuesDto> values = new ArrayList<>();
 
         for (GraphicValue graphicValue :
@@ -40,7 +27,7 @@ public class GraphicUserDto {
 
             Optional<ValuesDto> optValues = values.stream().filter(x -> x.getName().equals(graphicValue.getName())).findFirst();
             if (optValues.isPresent()) {
-                optValues.get().setValues(optValues.get().getValues().concat(" ," + graphicValue.getValue()));
+                optValues.get().setValues(optValues.get().getValues().concat(", " + graphicValue.getValue()));
             } else {
                 values.add(
                         new ValuesDto(graphicValue.getName(), graphicValue.getValue())
@@ -49,28 +36,6 @@ public class GraphicUserDto {
         }
 
         this.values = values;
-        //       valuesByName.
-//        graphic.getValues().stream().collect(Collectors.groupingBy(GraphicValue::getName, toList())).forEach(K, V ->
-//            System.out.printf(key);
-//        );
-
-        //valuesByName.;
-
-//        for (GraphicValue value :
-//                graphic.getValues()) {
-//
-//            ValuesDto dto = new ValuesDto();
-//            dto.setName(value.getName());
-//
-//
-//            dto.setValues(graphic.getValues().stream()
-//                    .filter(graphicValue -> graphicValue.getName() == value.getName())
-//                    .map(graphicValue -> graphicValue.getValue())
-//                    .reduce("", String::concat)
-//            );
-//
-//
-//        }
     }
 
     public String getGraphicName() {
